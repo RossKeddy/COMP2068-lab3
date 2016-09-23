@@ -1,0 +1,15 @@
+{
+  "name": "comp2068-lab3",
+  "version": "1.0.0",
+  "description": "A simple calculator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "RossKeddy"
+  ],
+  "author": "Ross Keddy",
+  "license": "ISC"
+}
