@@ -43,19 +43,24 @@ var url = require('url');
 
 var app = connect();
 
-
+/*
+* Function calculates the values
+*/
 var calculate = function(req, res, next) {
     res.write('<h1>Calculator</h1>');
 
-    // calculate total from qs
+    //parse url
     var qs = url.parse(req.url, true).query;
 
-    //init var
+    //initialize variables
     var method = qs.method;
     var x = parseFloat(qs.x);
     var y = parseFloat(qs.y);
 
-    if (!isNaN(x) && !isNaN(y)) {
+	/*
+	* Validation and output formatting
+	*/
+    if (!isNaN(x) && !isNaN(y)) { //numeric validation
         switch (method) {
             case 'add':
                 res.write(x + ' + ' + y + ' = ' + (x + y));
@@ -69,15 +74,15 @@ var calculate = function(req, res, next) {
             case 'divide':
                 res.write(x + ' / ' + y + ' = ' + (x / y));
                 break;
-            default :
+            default : //send error if method is not add/subtract/multiply/divide
                 res.write('<p>Not a valid method</p>');
                 break;
         };
-    } else {
+    } else { //send error
         res.write('<p>Values must be integers!</p>');
     }; //end of numeric validation
     res.end();
-};
+};//end of function
 
 app.use(calculate);
 
